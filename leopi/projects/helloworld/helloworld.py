@@ -53,3 +53,17 @@ def fib(n):
     print()
 
 fib(2000)
+
+# Sets
+print("\nIntroducing sets")
+
+basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+print(basket)
+
+if "orange" in basket:
+    print("\nOrange is in basket")
+
+a = set('abracadabra')
+print(a)
+
+del basket, a
