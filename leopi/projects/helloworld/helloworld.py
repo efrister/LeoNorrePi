@@ -40,6 +40,9 @@ print("\n Range:")
 for i in range(2, 5):
     print(i)
 
+# Cleanup scope
+del a, b
+
 # Functions
 def fib(n):
     """Print a Fibonacci series up to n."""
