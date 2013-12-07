@@ -67,3 +67,10 @@ a = set('abracadabra')
 print(a)
 
 del basket, a
+
+# Adding to path
+# import sys
+# sys.path.append('/ufs/guido/lib/python')
+
+print("\n")
+print(dir())
