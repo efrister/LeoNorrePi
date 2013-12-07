@@ -74,3 +74,13 @@ del basket, a
 
 print("\n")
 print(dir())
+
+# Format
+print("\nFormat")
+print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+print('We are the {1} who say "{0}!"'.format('knights', 'Ni'))
+
+# Table
+for x in range(1, 11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3), end=' ')
+    print(repr(x*x*x).rjust(4))
