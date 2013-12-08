@@ -1,12 +1,13 @@
 from twython import *
 import configparser
 import sys
+import os
 
 # Read configuration
 configuration = {}
 try:
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read(os.path.dirname(os.path.abspath(__file__)) + '/config.ini')
 
     # Read all options into a dictionary
     for section in config.sections():
