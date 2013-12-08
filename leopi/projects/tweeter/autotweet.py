@@ -24,7 +24,8 @@ oauth = configuration['OAuth']
 twitter = Twython(oauth['app_key'], oauth['app_secret'], oauth['oauth_token'], oauth['oauth_token_secret'])
 
 if 2 == len(sys.argv):
-    tweet = sys.argv[1]
+    # Tweet and inject the uname
+    tweet = sys.argv[1].format(os.uname()[1])
     try:
         twitter.update_status(status=tweet)
     except TwythonError as Error:
