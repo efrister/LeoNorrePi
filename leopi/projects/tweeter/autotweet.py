@@ -8,7 +8,8 @@ from datetime import timedelta
 configuration = {}
 try:
     config = configparser.ConfigParser()
-    config.read(os.path.dirname(os.path.abspath(__file__)) + '/config.ini')
+    absPath = os.path.dirname(os.path.abspath(__file__)) + '/config/'
+    config.read([absPath + 'config.ini', absPath + 'autotweet.ini'])
 
     # Read all options into a dictionary
     for section in config.sections():
@@ -41,7 +42,17 @@ currentTime = strftime("%d.%m.%Y %H:%M:%S", localtime())
 # Try to tweet
 if 2 == len(sys.argv):
     # Tweet and inject the uname
-    tweet = sys.argv[1].format(os.uname()[1], uptimeValue, currentTime)
+    mode = int(sys.argv[1])
+    tweet = ''
+    if mode == 1:
+        # Boot
+        tweet = configuration['Autotweet']['boot_message']
+    elif mode == 0:
+        # Shutdown
+        tweet = configuration['Autotweet']['shutdown_message']
+    else:
+        tweet = 'Unknown Mode was used when starting {0}'
+    tweet = tweet.format(os.uname()[1], uptimeValue, currentTime)
     try:
         twitter.update_status(status=tweet)
     except TwythonError as Error:

@@ -15,7 +15,7 @@ Then, fill the app oauth data (consumer key/secret and token key/secret)
 
 1. Install pip
 2. Install virtualenv
-3. Build a virtualenv that has twython installed, using pip
+3. Build a virtualenv that has twython installed, using pip, into ENV
 
 Making it run on startup
 ------------------------
