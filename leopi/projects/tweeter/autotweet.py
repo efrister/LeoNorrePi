@@ -34,10 +34,14 @@ try:
 except IOError:
     print("Cannot tweet uptime, not on a Pi.")
 
+# Get current time
+from time import gmtime, strftime
+currentTime = strftime("%d.%m.%Y %H:%M:%S", gmtime())
+
 # Try to tweet
 if 2 == len(sys.argv):
     # Tweet and inject the uname
-    tweet = sys.argv[1].format(os.uname()[1], uptimeValue)
+    tweet = sys.argv[1].format(os.uname()[1], uptimeValue, currentTime)
     try:
         twitter.update_status(status=tweet)
     except TwythonError as Error:

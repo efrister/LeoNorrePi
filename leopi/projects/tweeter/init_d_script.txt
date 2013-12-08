@@ -15,12 +15,12 @@ case "$1" in
   start)
     echo "Starting AutoTweeter"
     # run application you want to start
-    cd /home/pi/programs/LeoNorrePi/leopi/projects/tweeter/ENV/bin/ && ./python3 ../../autotweet.py "Booting {0}..."
+    cd /home/pi/programs/LeoNorrePi/leopi/projects/tweeter/ENV/bin/ && ./python3 ../../autotweet.py "Booted {0}. Current Time: {2}"
     ;;
   stop)
     echo "Stopping AutoTweeter"
     # kill application you want to stop
-    cd /home/pi/programs/LeoNorrePi/leopi/projects/tweeter/ENV/bin/ && ./python3 ../../autotweet.py "Shutting down {0}. Uptime: {1}"
+    cd /home/pi/programs/LeoNorrePi/leopi/projects/tweeter/ENV/bin/ && ./python3 ../../autotweet.py "Shutting down {0}. Uptime: {1}. Current Time: {2}"
     ;;
   *)
     echo "Usage: /etc/init.d/AutoTweeter {start|stop}"
