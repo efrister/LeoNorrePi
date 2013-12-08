@@ -66,3 +66,13 @@ if 0 < delete:
         delete -= 1
 else:
     print("Not deleting anything.")
+
+# Tweet uptime
+from datetime import timedelta
+
+try:
+    with open('/proc/uptime', 'r') as f:
+        uptime_seconds = float(f.readline().split()[0])
+        uptime_string = str(timedelta(seconds=uptime_seconds))
+except IOError:
+    print("Cannot tweet uptime, not on a Pi.")

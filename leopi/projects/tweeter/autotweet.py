@@ -2,6 +2,7 @@ from twython import *
 import configparser
 import sys
 import os
+from datetime import timedelta
 
 # Read configuration
 configuration = {}
@@ -23,9 +24,20 @@ except configparser.MissingSectionHeaderError as e:
 oauth = configuration['OAuth']
 twitter = Twython(oauth['app_key'], oauth['app_secret'], oauth['oauth_token'], oauth['oauth_token_secret'])
 
+# Get uptime
+uptimeValue = 'Unknown.'
+
+try:
+    with open('/proc/uptime', 'r') as f:
+        uptimeSeconds = float(f.readline().split()[0])
+        uptimeValue = str(timedelta(seconds=uptimeSeconds))
+except IOError:
+    print("Cannot tweet uptime, not on a Pi.")
+
+# Try to tweet
 if 2 == len(sys.argv):
     # Tweet and inject the uname
-    tweet = sys.argv[1].format(os.uname()[1])
+    tweet = sys.argv[1].format(os.uname()[1], uptimeValue)
     try:
         twitter.update_status(status=tweet)
     except TwythonError as Error:
