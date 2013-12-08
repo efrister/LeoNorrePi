@@ -35,8 +35,8 @@ except IOError:
     print("Cannot tweet uptime, not on a Pi.")
 
 # Get current time
-from time import gmtime, strftime
-currentTime = strftime("%d.%m.%Y %H:%M:%S", gmtime())
+from time import localtime, strftime
+currentTime = strftime("%d.%m.%Y %H:%M:%S", localtime())
 
 # Try to tweet
 if 2 == len(sys.argv):
