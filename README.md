@@ -33,5 +33,5 @@ Overclocking is always a mater of heat vs. performance, I usually never overcloc
 
 Links
 -----
-[1] http://www.raspberrypi.org/downloads
+[1] http://www.raspberrypi.org/downloads<br />
 [2] http://www.youtube.com/watch?v=XkOe3tX6Tpk&feature=youtu.be
