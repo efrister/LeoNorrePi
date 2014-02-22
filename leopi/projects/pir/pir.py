@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time
+from time import time,strftime
 
 GPIO.setmode(GPIO.BOARD)
 PIR_PIN = 7
@@ -7,10 +7,8 @@ PIR_PIN = 7
 GPIO.setup(PIR_PIN, GPIO.IN)
 
 def MOTION(PIR_PIN):
-    print("Motion Detected!")
-
-def UNMOTION(PIR_PIN):
-    print("Motion reset on PIN ", PIR_PIN, ".")
+    currentTime = strftime("%d.%m.%Y %H:%M:%S")
+    print("Motion Detected at ", currentTime)
 
 print("PIR Module Test (CTRL+C to exit)")
 time.sleep(2)
@@ -18,8 +16,7 @@ time.sleep(2)
 print("Ready")
 
 try:
-    GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
-    GPIO.add_event_detect(PIR_PIN, GPIO.FALLING, callback=UNMOTION)
+    GPIO.add_event_detect(PIR_PIN, GPIO.BOTH, callback=MOTION)
     while 1:
         time.sleep(100)
 except KeyboardInterrupt:
