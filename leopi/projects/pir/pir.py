@@ -12,8 +12,9 @@ GPIO.setup(PIR_PIN, GPIO.IN)
 last_event = ""
 
 def MOTION(PIR_PIN):
+    global last_event
     current_time = strftime("%d.%m.%Y %H:%M:%S")
-    current_event = ""
+
     if last_event == "" or last_event == EVENT_FALLING:
         current_event = EVENT_RISING
     else:
