@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
-from time import time,strftime
+import time
+from time import strftime
 
 GPIO.setmode(GPIO.BOARD)
 PIR_PIN = 7
